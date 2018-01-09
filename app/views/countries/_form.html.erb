@@ -1,0 +1,15 @@
+<%= form_with(model: country) do |form| %>
+  <div class="field">
+	<div class="field">
+	  <%= form.label :name, "Nom" %>
+	  <%= form.text_field :name %>
+	</div>
+	<div class="field">
+	  <%= form.label :description, "Description" %>
+	  <%= form.text_field :description %>
+	</div>
+  </div>
+  <div class="actions">
+	<%= form.submit "Enregistrer" %>
+  </div>
+<% end %>

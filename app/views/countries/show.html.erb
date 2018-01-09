@@ -1,0 +1,10 @@
+<h1>Affichage d'un pays</h1>
+
+<p>Nom : <%= @country.name %></p>
+<p>Description : <%= @country.description %></p>
+
+<h1>Liste des villes :</h1>
+
+<% @cities.each do |city| %>
+	<%= @city.name %>
+<% end %>

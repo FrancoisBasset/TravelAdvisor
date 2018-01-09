@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180103193456) do
 
-  create_table "Activity", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.text "city", null: false
     t.text "name", null: false
     t.text "address", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["rank"], name: "Activity_rank_uindex", unique: true
   end
 
-  create_table "ActivityOpinion", force: :cascade do |t|
+  create_table "activitiesOpinions", force: :cascade do |t|
     t.integer "activity", null: false
     t.integer "user", null: false
     t.text "opinion"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["id"], name: "ActivityOpinion_id_uindex", unique: true
   end
 
-  create_table "City", force: :cascade do |t|
+  create_table "cities", force: :cascade do |t|
     t.integer "country", null: false
     t.text "name", null: false
     t.text "description"
@@ -40,14 +40,22 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["rank"], name: "City_rank_uindex", unique: true
   end
 
-  create_table "Country", force: :cascade do |t|
+  create_table "countries", force: :cascade do |t|
     t.text "name", null: false
     t.text "description"
     t.index ["id"], name: "Country_id_uindex", unique: true
     t.index ["name"], name: "Country_name_uindex", unique: true
   end
 
-  create_table "Hotel", force: :cascade do |t|
+  create_table "hotelOpinions", force: :cascade do |t|
+    t.integer "hotel", null: false
+    t.integer "user", null: false
+    t.text "opinion"
+    t.float "mark", null: false
+    t.index ["id"], name: "HotelOpinion_id_uindex", unique: true
+  end
+
+  create_table "hotels", force: :cascade do |t|
     t.integer "city", null: false
     t.text "name", null: false
     t.text "address", null: false
@@ -57,15 +65,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["rank"], name: "Hotel_rank_uindex", unique: true
   end
 
-  create_table "HotelOpinion", force: :cascade do |t|
-    t.integer "hotel", null: false
+  create_table "restaurantOpinions", force: :cascade do |t|
+    t.integer "restaurant", null: false
     t.integer "user", null: false
     t.text "opinion"
     t.float "mark", null: false
-    t.index ["id"], name: "HotelOpinion_id_uindex", unique: true
+    t.index ["id"], name: "RestaurantOpinion_id_uindex", unique: true
   end
 
-  create_table "Restaurant", force: :cascade do |t|
+  create_table "restaurants", force: :cascade do |t|
     t.integer "city", null: false
     t.text "name", null: false
     t.text "address", null: false
@@ -76,15 +84,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["rank"], name: "Restaurant_rank_uindex", unique: true
   end
 
-  create_table "RestaurantOpinion", force: :cascade do |t|
-    t.integer "restaurant", null: false
-    t.integer "user", null: false
-    t.text "opinion"
-    t.float "mark", null: false
-    t.index ["id"], name: "RestaurantOpinion_id_uindex", unique: true
-  end
-
-  create_table "User", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.text "name", null: false
     t.boolean "professional", default: false, null: false
     t.index ["id"], name: "User_id_uindex", unique: true
