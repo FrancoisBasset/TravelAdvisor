@@ -43,8 +43,7 @@ ActiveRecord::Schema.define(version: 20180103193456) do
   create_table "countries", force: :cascade do |t|
     t.text "name", null: false
     t.text "description"
-    t.index ["id"], name: "Country_id_uindex", unique: true
-    t.index ["name"], name: "Country_name_uindex", unique: true
+    t.text "Field4"
   end
 
   create_table "hotelOpinions", force: :cascade do |t|

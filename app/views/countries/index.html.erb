@@ -14,8 +14,8 @@
         <td><%= country.description %></td>
 		<td>
 		  <%= link_to 'Afficher', country %>
-		  <!--<%= link_to 'Modifier', edit_country_path(country) %>
-		  <%= link_to 'Supprimer', country, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %>-->
+		  <%= link_to 'Modifier', edit_country_path(country) %>
+		  <%= link_to 'Supprimer', country, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %>
 		</td>
       </tr>
     <% end %>
