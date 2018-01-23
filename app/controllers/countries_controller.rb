@@ -2,14 +2,12 @@ class CountriesController < ApplicationController
 
 	before_action :set_countries, only: [:show, :edit, :destroy, :update]
 
-
   def index
     @countries = Country.all
   end
 
-  def show  
-	cid = @country.id
-	@cities = City.where('country = :cid')
+  def show
+		@cities = City.all
   end
 
   def new
@@ -17,39 +15,37 @@ class CountriesController < ApplicationController
   end
 
   def create
-	@country = Country.new(
-	  params.require(:country).permit(
-		:name, :description, :nbTouristes))
+		@country = Country.new(
+	  	params.require(:country).permit(
+			:name, :description, :touristsCount))
 
-	if @country.save
-	  redirect_to(@country)
-	else
-	  render "new"
-	end
+		if @country.save
+	  	redirect_to(@country)
+		else
+	  	render "new"
+		end
   end
 
   def edit;  end
 
   def update
-
-	if @country.update(
-	  params.require(:country).permit(
-		:name, :description, :nbTouristes))
-	  redirect_to(@country)
-	else
-	  render 'edit'
-	end
+		if @country.update(
+	  	params.require(:country).permit(
+				:name, :description, :touristsCount))
+	  	redirect_to(@country)
+		else
+	  	render 'edit'
+		end
   end
 
   def destroy
-
-	@country.destroy
-	redirect_to(countries_path)
+		@country.destroy
+		redirect_to(countries_path)
   end
 
-  private 
+  private
 
-  def set_countries 
-  		    @country = Country.find(params[:id])
+  def set_countries
+		@country = Country.find(params[:id])
   end
 end

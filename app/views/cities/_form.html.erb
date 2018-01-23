@@ -1,4 +1,4 @@
-<%= form_with(model: country) do |form| %>
+<%= form_with(model: city) do |form| %>
   <div class="field">
 	<div class="field">
 	  <%= form.label :name, "Nom" %>
@@ -9,8 +9,8 @@
 	  <%= form.text_field :description %>
 	</div>
 	<div class="field">
-		<%= form.label :touristsCount, "Nombre de touristes" %>
-		<%= form.text_field :touristsCount %>
+		<%= form.label :rank, "Classement" %>
+		<%= form.text_field :rank %>
 	</div>
   </div>
   <div class="actions">
