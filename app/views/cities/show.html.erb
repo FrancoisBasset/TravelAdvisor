@@ -1,6 +1,7 @@
-<p><%= @city.name %></p>
+<p class='pays'><%= link_to @country.name, @country %></p>
+
+<p class='ville'><%= @city.name %></h3>
+<p>Classé <%= @city.rank %> sur <%= City.count %></p>
+<p><%= @city.description %></p>
 
 <%= image_tag(@city.name + ".jpg") %>
-
-<p>Classement : <%= @city.rank %></p>
-<p><%= @city.description %></p>

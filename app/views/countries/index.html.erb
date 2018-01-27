@@ -1,10 +1,7 @@
-<h1>Liste des pays</h1>
-
 <ul>
   <% @countries.each do |country| %>
-    </br><text size='50px'><%= country.name %></text></br>
+</br><text class='pays'><%= country.name %></text></br>
     <%= link_to image_tag(country.name + ".jpg", width: '20%'), country %>
-    <%= link_to 'Afficher', country %>
 	  <%= link_to 'Modifier', edit_country_path(country) %>
 	  <%= link_to 'Supprimer', country, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %>
   <% end %>

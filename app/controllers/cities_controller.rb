@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
 	before_action :set_cities, only: [:show, :edit, :destroy, :update]
 
   def show
-		@cities = City.all
+		@country = Country.find(@city.country)
   end
 
   def new

@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ a {
+   text-decoration: none;
+ }
+
+ .logo {
+   text-align: center;
+   font-size: 40px;
+ }
+
+.pays {
+  font-size: 30px;
+}
+
+.ville {
+  font-size: 20px;
+}
