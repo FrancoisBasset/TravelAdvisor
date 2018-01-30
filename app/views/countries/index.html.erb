@@ -1,11 +1,8 @@
-<ul>
-  <% @countries.each do |country| %>
-</br><text class='pays'><%= country.name %></text></br>
-    <%= link_to image_tag(country.name + ".jpg", width: '20%'), country %>
-	  <%= link_to 'Modifier', edit_country_path(country) %>
-	  <%= link_to 'Supprimer', country, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %>
-  <% end %>
-</ul>
+<% @countries.each do |country| %>
+  <div class='image'>
+    <%= link_to image_tag("countries/" + country.name + ".jpg", height: '200px'), country %>
+  </div>
+<% end %>
 
 <p>
   <%= link_to 'Ajouter un pays', new_country_path %>

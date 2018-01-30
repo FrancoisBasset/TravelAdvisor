@@ -3,7 +3,7 @@ class CountriesController < ApplicationController
 	before_action :set_countries, only: [:show, :edit, :destroy, :update]
 
   def index
-    @countries = Country.all
+    @countries = Country.order('name')
   end
 
   def show
@@ -15,9 +15,16 @@ class CountriesController < ApplicationController
   end
 
   def create
+		puts params
+
 		@country = Country.new(
 	  	params.require(:country).permit(
 			:name, :description, :touristsCount))
+
+		uploaded_io = params[:country][:image]
+	  File.open(Rails.root.join('app', 'assets', 'images', 'countries', @country.name + ".jpg"), 'wb') do |file|
+	    file.write(uploaded_io.read)
+		end
 
 		if @country.save
 	  	redirect_to(@country)
@@ -47,5 +54,6 @@ class CountriesController < ApplicationController
 
   def set_countries
 		@country = Country.find(params[:id])
+		puts params
   end
 end

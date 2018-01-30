@@ -14,14 +14,15 @@
  *= require_self
  */
 
- a {
-   text-decoration: none;
- }
+a {
+  text-decoration: none;
+  color: black;
+}
 
- .logo {
-   text-align: center;
-   font-size: 40px;
- }
+.logo {
+  text-align: center;
+  font-size: 40px;
+}
 
 .pays {
   font-size: 30px;
@@ -29,4 +30,15 @@
 
 .ville {
   font-size: 20px;
+}
+
+.image {
+  left: 0px;
+  display: inline;
+}
+
+.imagecenter {
+  position:absolute;
+  transform: translate(-50%, -50%);
+  color: black;
 }

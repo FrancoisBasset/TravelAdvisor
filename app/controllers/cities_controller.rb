@@ -11,9 +11,11 @@ class CitiesController < ApplicationController
   end
 
   def create
+		puts @country
+
 		@city = City.new(
 	  	params.require(:city).permit(
-			:name, :description, :rank))
+			:name, :country, :description, :rank))
 
 		if @city.save
 	  	redirect_to(@city)

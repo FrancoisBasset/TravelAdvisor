@@ -1,10 +1,21 @@
 <p class='pays'><%= @country.name %></p>
+<%= link_to 'Modifier', edit_country_path(@country) %>
+<%= link_to 'Supprimer', @country, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></br>
+
+<%= image_tag("countries/" + @country.name + ".jpg", height: '200px') %>
+
 <p><%= @country.touristsCount %> touristes</p>
 <p><%= @country.description %></p>
 
 <% @cities.each do |city| %>
 	<% if @country.id == city.country %>
-		<label class='ville'><%= city.name %></label>
-		<%= link_to image_tag(city.name + ".jpg", width: '20%'), city %>
+		<div class='image'>
+			<%= link_to image_tag("cities/" + city.name + ".jpg", height: "200px"), city %>
+			<text><%= city.name %></text>
+		</div>
 	<% end %>
 <% end %>
+
+<p>
+  <%= link_to 'Ajouter une ville', new_city_path %>
+</p>
