@@ -17,6 +17,11 @@ class CitiesController < ApplicationController
 	  	params.require(:city).permit(
 			:name, :country, :description, :rank))
 
+		uploaded_io = params[:city][:image]
+	  File.open(Rails.root.join('app', 'assets', 'images', 'cities', @country.name + ".jpg"), 'wb') do |file|
+	    file.write(uploaded_io.read)
+		end
+
 		if @city.save
 	  	redirect_to(@city)
 		else
