@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
 			:name, :country, :description, :rank))
 
 		uploaded_io = params[:city][:image]
-	  File.open(Rails.root.join('app', 'assets', 'images', 'cities', @country.name + ".jpg"), 'wb') do |file|
+	  File.open(Rails.root.join('app', 'assets', 'images', 'cities', @city.name + ".jpg"), 'wb') do |file|
 	    file.write(uploaded_io.read)
 		end
 
