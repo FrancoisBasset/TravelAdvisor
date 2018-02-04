@@ -1,9 +1,10 @@
-<% @countries.each do |country| %>
-  <div class='image'>
-    <%= link_to image_tag("countries/" + country.name + ".jpg", height: '200px'), country %>
-  </div>
-<% end %>
-
 <p>
   <%= link_to 'Ajouter un pays', new_country_path %>
+  <%= link_to 'Supprimer un pays', deletecountry_countries_path %></br>
 </p>
+
+<% @countries.each do |country| %>
+  <div class='image'>
+    <%= link_to image_tag('countries/' + country.name + '.jpg', height: '200px'), country %>
+  </div>
+<% end %>

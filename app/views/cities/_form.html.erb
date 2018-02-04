@@ -1,12 +1,9 @@
 <%= form_with(model: city) do |form| %>
-  <div class="field">
 	<div class="field">
 	  <%= form.label :name, "Nom" %>
 	  <%= form.text_field :name %>
 	</div>
-  <div class='field'>
-    
-  </div>
+
 	<div class="field">
 	  <%= form.label :description, "Description" %>
 	  <%= form.text_field :description %>
@@ -15,8 +12,13 @@
 		<%= form.label :rank, "Classement" %>
 		<%= form.text_field :rank %>
 	</div>
-  </div>
+
+	<div class="field">
+		<%= form.label :image, "Image" %>
+    <%= form.file_field :image %>
+	</div>
+
   <div class="actions">
-	<%= form.submit "Enregistrer" %>
+    <%= form.submit "Enregistrer" %>
   </div>
 <% end %>

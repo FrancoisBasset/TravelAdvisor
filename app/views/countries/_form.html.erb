@@ -1,24 +1,25 @@
 <%= form_with(model: country) do |form| %>
   <div class="field">
-    <div class="field">
-      <%= form.label :name, "Nom" %>
-	    <%= form.text_field :name %>
-    </div>
-    <div class="field">
-      <%= form.label :description, "Description" %>
-      <%= form.text_field :description %>
-    </div>
-    <div class="field">
-      <%= form.label :touristsCount, "Nombre de touristes" %>
-      <%= form.text_field :touristsCount %>
-    </div>
-    <div class="field">
-      <%= form.label :image, "Image" %>
-      <%= form.file_field :image %>
-    </div>
+    <%= form.label :name, "Nom" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Description" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :touristsCount, "Nombre de touristes" %>
+    <%= form.text_field :touristsCount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "Image" %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">
-	<%= form.submit "Enregistrer" %>
+     <%= form.submit "Enregistrer" %>
   </div>
 <% end %>

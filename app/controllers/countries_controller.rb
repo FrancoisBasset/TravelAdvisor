@@ -1,25 +1,20 @@
 class CountriesController < ApplicationController
+	before_action :all_countries, only: [:index, :deletecountry]
+	before_action :set_country, only: [:show, :edit, :destroy, :update]
+	before_action :set_cities, only: [:show, :destroy]
 
-	before_action :set_countries, only: [:show, :edit, :destroy, :update]
-
-  def index
-    @countries = Country.order('name')
-  end
-
-  def show
-		@cities = City.all
-  end
+  def show; end
 
   def new
     @country = Country.new
   end
 
-  def create
-		puts params
+	def deletecountry;	end
 
+  def create
 		@country = Country.new(
-	  	params.require(:country).permit(
-			:name, :description, :touristsCount))
+	  	params.require(:country).permit(:name, :description, :touristsCount)
+		)
 
 		uploaded_io = params[:country][:image]
 	  File.open(Rails.root.join('app', 'assets', 'images', 'countries', @country.name + ".jpg"), 'wb') do |file|
@@ -27,33 +22,50 @@ class CountriesController < ApplicationController
 		end
 
 		if @country.save
-	  	redirect_to(@country)
+	  	redirect_to(countries_path)
 		else
 	  	render "new"
 		end
   end
 
-  def edit;  end
+  def edit; end
 
   def update
-		if @country.update(
-	  	params.require(:country).permit(
-				:name, :description, :touristsCount))
-	  	redirect_to(@country)
+		if @country.update(params.require(:country).permit(:name, :description, :touristsCount))
+			redirect_to(@country)
 		else
 	  	render 'edit'
 		end
   end
 
   def destroy
+		@cities.each do |city|
+			File.delete("app/assets/images/countries/" + city.name + ".jpg")
+			city.destroy
+		end
+
 		@country.destroy
-		redirect_to(countries_path)
+		File.delete("app/assets/images/countries/" + @country.name + ".jpg")
+
+		if Country.count == 0
+			redirect_to(countries_path)
+		else
+			redirect_to(deleteform_countries_path)
+		end
   end
 
   private
 
-  def set_countries
+	def all_countries
+		@countries = Country.order('name')
+	end
+
+  def set_country
 		@country = Country.find(params[:id])
-		puts params
   end
+
+	def set_cities
+		@cities = City.where(country: @country.id)
+	end
+
 end

@@ -7,15 +7,14 @@ class CitiesController < ApplicationController
   end
 
   def new
+		@country = Country.find(params[:format])
     @city = City.new
   end
 
   def create
-		puts @country
-
 		@city = City.new(
 	  	params.require(:city).permit(
-			:name, :country, :description, :rank))
+			:name, 49, :description, :rank))
 
 		uploaded_io = params[:city][:image]
 	  File.open(Rails.root.join('app', 'assets', 'images', 'cities', @city.name + ".jpg"), 'wb') do |file|
@@ -23,6 +22,7 @@ class CitiesController < ApplicationController
 		end
 
 		if @city.save
+			puts "OK"
 	  	redirect_to(@city)
 		else
 	  	render "new"
@@ -34,7 +34,7 @@ class CitiesController < ApplicationController
   def update
 		if @city.update(
 			params.require(:city).permit(
-				:name, :description, :rank))
+				:name, 49, :description, :rank))
 
 			redirect_to(@city)
 		else
@@ -43,6 +43,7 @@ class CitiesController < ApplicationController
   end
 
   def destroy
+		File.delete("app/assets/images/cities/" + @city.name + ".jpg")
 		@city.destroy
 		redirect_to(cities_path)
   end

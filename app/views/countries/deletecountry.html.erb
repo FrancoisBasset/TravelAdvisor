@@ -1,0 +1,7 @@
+<h1>Sélectionner un pays à supprimer</h1>
+
+<% @countries.each do |country| %>
+  <div class='image'>
+    <%= link_to image_tag('countries/' + country.name + '.jpg', height: '200px'), country, method: :delete %>
+  </div>
+<% end %>
