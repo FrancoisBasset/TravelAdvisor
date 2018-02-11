@@ -1,20 +1,24 @@
 class CitiesController < ApplicationController
-
-	before_action :set_cities, only: [:show, :edit, :destroy, :update]
+	before_action :set_country, only: [:new]
+	before_action :set_city, only: [:show, :edit, :destroy, :update]
 
   def show
+		@@country = Country.find(@city.country)
 		@country = Country.find(@city.country)
   end
 
   def new
-		@country = Country.find(params[:format])
     @city = City.new
   end
 
   def create
-		@city = City.new(
-	  	params.require(:city).permit(
-			:name, 49, :description, :rank))
+		puts @@country
+
+		@city = City.new
+		@city.name = params[:city][:name]
+		@city.description = params[:city][:description]
+		@city.rank = params[:city][:rank]
+		@city.country = @@country.id
 
 		uploaded_io = params[:city][:image]
 	  File.open(Rails.root.join('app', 'assets', 'images', 'cities', @city.name + ".jpg"), 'wb') do |file|
@@ -22,7 +26,6 @@ class CitiesController < ApplicationController
 		end
 
 		if @city.save
-			puts "OK"
 	  	redirect_to(@city)
 		else
 	  	render "new"
@@ -34,7 +37,14 @@ class CitiesController < ApplicationController
   def update
 		if @city.update(
 			params.require(:city).permit(
-				:name, 49, :description, :rank))
+				:name, :country ,:description, :rank))
+
+			if params[:city][:image]
+				uploaded_io = params[:city][:image]
+		  	File.open(Rails.root.join('app', 'assets', 'images', 'cities', @city.name + ".jpg"), 'wb') do |file|
+		    	file.write(uploaded_io.read)
+				end
+			end
 
 			redirect_to(@city)
 		else
@@ -43,14 +53,20 @@ class CitiesController < ApplicationController
   end
 
   def destroy
+		puts @city
 		File.delete("app/assets/images/cities/" + @city.name + ".jpg")
 		@city.destroy
-		redirect_to(cities_path)
+		redirect_to(deletecity_countries_path)
   end
 
   private
 
-  def set_cities
+	def set_country
+		@@country = Country.find(params[:id])
+		@country = Country.find(params[:id])
+	end
+
+  def set_city
 		@city = City.find(params[:id])
   end
 end

@@ -1,7 +1,7 @@
 class CountriesController < ApplicationController
 	before_action :all_countries, only: [:index, :deletecountry]
-	before_action :set_country, only: [:show, :edit, :destroy, :update]
-	before_action :set_cities, only: [:show, :destroy]
+	before_action :set_country, only: [:show, :edit, :destroy, :update, :deletecity, :modifycity]
+	before_action :set_cities, only: [:show, :destroy, :deletecity, :modifycity]
 
   def show; end
 
@@ -10,6 +10,8 @@ class CountriesController < ApplicationController
   end
 
 	def deletecountry;	end
+
+	def deletecity; end
 
   def create
 		@country = Country.new(
@@ -32,6 +34,13 @@ class CountriesController < ApplicationController
 
   def update
 		if @country.update(params.require(:country).permit(:name, :description, :touristsCount))
+			if params[:country][:image]
+				uploaded_io = params[:country][:image]
+		  	File.open(Rails.root.join('app', 'assets', 'images', 'countries', @country.name + ".jpg"), 'wb') do |file|
+		    	file.write(uploaded_io.read)
+				end
+			end
+
 			redirect_to(@country)
 		else
 	  	render 'edit'
@@ -40,7 +49,7 @@ class CountriesController < ApplicationController
 
   def destroy
 		@cities.each do |city|
-			File.delete("app/assets/images/countries/" + city.name + ".jpg")
+			File.delete("app/assets/images/cities/" + city.name + ".jpg")
 			city.destroy
 		end
 
@@ -50,7 +59,7 @@ class CountriesController < ApplicationController
 		if Country.count == 0
 			redirect_to(countries_path)
 		else
-			redirect_to(deleteform_countries_path)
+			redirect_to(deletecountry_countries_path)
 		end
   end
 

@@ -1,0 +1,9 @@
+<h1>Sélectionner une ville à modifier</h1>
+
+<h1><<%= @country.name %></h1>
+
+<% @cities.each do |city| %>
+  <div class='image'>
+    <%= link_to image_tag('cities/' + city.name + '.jpg', height: '200px'), edit_city_path(city) %>
+  </div>
+<% end %>

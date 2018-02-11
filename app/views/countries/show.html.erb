@@ -1,9 +1,10 @@
 <p class='pays'><%= @country.name %></p>
 <%= link_to 'Modifier', edit_country_path(@country) %></br>
-<%#= link_to 'Supprimer des villes', deletecity_country_path(@cities) %></br>
+<%= link_to 'Ajouter une ville', new_cities_path(@country) %></br>
+<%= link_to 'Modifier une ville', modifycity_countries_path(@country) %></br>
+<%= link_to 'Supprimer des villes', deletecity_countries_path(@country) %></br>
 
 <%= image_tag("countries/" + @country.name + ".jpg", height: '200px') %>
-
 
 <p><%= @country.touristsCount %> touristes</p>
 <p><%= @country.description %></p>
@@ -14,7 +15,3 @@
 		<text><%= city.name %></text>
 	</div>
 <% end %>
-
-<p>
-  <%= link_to 'Ajouter une ville', new_city_path(@country) %>
-</p>
