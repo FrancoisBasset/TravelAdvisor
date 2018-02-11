@@ -74,11 +74,8 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.integer "city", null: false
     t.text "name", null: false
     t.text "address", null: false
-    t.integer "owner", null: false
     t.float "mark", null: false
     t.integer "rank", null: false
-    t.index ["id"], name: "Restaurant_id_uindex", unique: true
-    t.index ["rank"], name: "Restaurant_rank_uindex", unique: true
   end
 
   create_table "users", force: :cascade do |t|

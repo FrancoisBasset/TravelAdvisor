@@ -1,7 +1,29 @@
 <p class='pays'><%= link_to @country.name, @country %></p>
 
-<p class='ville'><%= @city.name %></h3>
+<h3 class='ville'><%= @city.name %></h3>
+
+<%= link_to "Modifier", edit_city_path(@city) %>
+<%=  %>
+
 <p>Classé <%= @city.rank %> sur <%= City.count %></p>
 <p><%= @city.description %></p>
 
 <%= image_tag("cities/" + @city.name + ".jpg") %>
+
+<h3>Restaurants</h3>
+
+<% @restaurants.each do |restaurant| %>
+  <%= image_tag("restaurants/" + restaurant.name + ".jpg", height: '200px') %>
+<% end %>
+
+<h3>Hotels</h3>
+
+<% @hotels.each do |hotel| %>
+  <%= image_tag("hotels/" + hotel.name + ".jpg", height: '200px') %>
+<% end %>
+
+<h3>Activités</h3>
+
+<% @activities.each do |activity| %>
+  <%= image_tag("activities/" + activity.name + ".jpg", height: '200px') %>
+<% end %>

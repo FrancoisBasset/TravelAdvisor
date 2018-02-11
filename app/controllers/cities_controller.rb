@@ -5,6 +5,9 @@ class CitiesController < ApplicationController
   def show
 		@@country = Country.find(@city.country)
 		@country = Country.find(@city.country)
+		@restaurants = Restaurant.where(city: @city.id)
+		@hotels = Hotel.where(city: @city.id)
+		@activities = Activity.where(city: @city.id)
   end
 
   def new
@@ -60,10 +63,9 @@ class CitiesController < ApplicationController
   end
 
   def destroy
-		puts @city
 		File.delete("app/assets/images/cities/" + @city.name + ".jpg")
 		@city.destroy
-		redirect_to(deletecity_countries_path)
+		redirect_to(countries_path)
   end
 
   private
