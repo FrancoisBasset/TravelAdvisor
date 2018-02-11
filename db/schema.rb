@@ -35,9 +35,7 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.integer "country", null: false
     t.text "name", null: false
     t.text "description"
-    t.integer "rank", default: 0, null: false
-    t.index ["id"], name: "City_id_uindex", unique: true
-    t.index ["rank"], name: "City_rank_uindex", unique: true
+    t.integer "rank", null: false
   end
 
   create_table "countries", force: :cascade do |t|

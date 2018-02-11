@@ -33,12 +33,19 @@ class CountriesController < ApplicationController
   def edit; end
 
   def update
+		@countryname = @country.name
+
 		if @country.update(params.require(:country).permit(:name, :description, :touristsCount))
 			if params[:country][:image]
 				uploaded_io = params[:country][:image]
 		  	File.open(Rails.root.join('app', 'assets', 'images', 'countries', @country.name + ".jpg"), 'wb') do |file|
 		    	file.write(uploaded_io.read)
 				end
+			end
+
+			if @countryname != @country.name
+				@beginning = "app/assets/images/countries/"
+				File.rename(@beginning + @countryname + ".jpg", @beginning + @country.name + ".jpg")
 			end
 
 			redirect_to(@country)

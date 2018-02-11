@@ -35,6 +35,8 @@ class CitiesController < ApplicationController
   def edit;  end
 
   def update
+		@cityname = @city.name
+
 		if @city.update(
 			params.require(:city).permit(
 				:name, :country ,:description, :rank))
@@ -44,6 +46,11 @@ class CitiesController < ApplicationController
 		  	File.open(Rails.root.join('app', 'assets', 'images', 'cities', @city.name + ".jpg"), 'wb') do |file|
 		    	file.write(uploaded_io.read)
 				end
+			end
+
+			if @cityname != @city.name
+				@beginning = "app/assets/images/cities/"
+				File.rename(@beginning + @cityname + ".jpg", @beginning + @city.name + ".jpg")
 			end
 
 			redirect_to(@city)
