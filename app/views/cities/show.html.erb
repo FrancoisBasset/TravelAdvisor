@@ -13,7 +13,7 @@
 <h3>Restaurants</h3>
 
 <% @restaurants.each do |restaurant| %>
-  <%= image_tag("restaurants/" + restaurant.name + ".jpg", height: '200px') %>
+  <%= link_to image_tag("restaurants/" + restaurant.name + ".jpg", height: '200px'), restaurant() %>
 <% end %>
 
 <h3>Hotels</h3>
