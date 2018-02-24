@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     get '/create/:id', on: :collection, to: 'cities#create', as: :create
     get '/new/:id', on: :collection, to: 'cities#new', as: :new
   end
-  resources :shops
+  resources :restaurants
+  resources :hotels
+  resources :activities
+  resources :opinions
 end

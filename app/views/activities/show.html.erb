@@ -1,0 +1,9 @@
+<h1><%= @activity.name %></h1>
+
+<p><%= @activity.address %></p>
+
+<p>Note : <%= @activity.mark %></p>
+
+<p>Note : <%= @activity.rank %> sur <%= Activity.count %></p>
+
+<%= image_tag("activities/" + @activity.name + ".jpg") %>

@@ -1,0 +1,9 @@
+<h1><%= @hotel.name %></h1>
+
+<p><%= @hotel.address %></p>
+
+<p>Note : <%= @hotel.mark %></p>
+
+<p>Note : <%= @hotel.rank %> sur <%= Hotel.count %></p>
+
+<%= image_tag("hotels/" + @hotel.name + ".jpg") %>

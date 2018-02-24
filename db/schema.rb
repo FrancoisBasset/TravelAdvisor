@@ -16,16 +16,12 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.text "city", null: false
     t.text "name", null: false
     t.text "address", null: false
-    t.integer "owner", null: false
     t.float "mark", null: false
     t.integer "rank", null: false
-    t.index ["id"], name: "Activity_id_uindex", unique: true
-    t.index ["rank"], name: "Activity_rank_uindex", unique: true
   end
 
   create_table "activitiesOpinions", force: :cascade do |t|
     t.integer "activity", null: false
-    t.integer "user", null: false
     t.text "opinion"
     t.float "mark", null: false
     t.index ["id"], name: "ActivityOpinion_id_uindex", unique: true
@@ -46,7 +42,6 @@ ActiveRecord::Schema.define(version: 20180103193456) do
 
   create_table "hotelOpinions", force: :cascade do |t|
     t.integer "hotel", null: false
-    t.integer "user", null: false
     t.text "opinion"
     t.float "mark", null: false
     t.index ["id"], name: "HotelOpinion_id_uindex", unique: true
@@ -56,7 +51,6 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.integer "city", null: false
     t.text "name", null: false
     t.text "address", null: false
-    t.integer "owner", null: false
     t.float "mark", null: false
     t.integer "rank", null: false
     t.index ["rank"], name: "Hotel_rank_uindex", unique: true
@@ -64,7 +58,6 @@ ActiveRecord::Schema.define(version: 20180103193456) do
 
   create_table "restaurantOpinions", force: :cascade do |t|
     t.integer "restaurant", null: false
-    t.integer "user", null: false
     t.text "opinion"
     t.float "mark", null: false
     t.index ["id"], name: "RestaurantOpinion_id_uindex", unique: true
