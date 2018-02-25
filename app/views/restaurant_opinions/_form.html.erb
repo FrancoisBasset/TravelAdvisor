@@ -1,0 +1,15 @@
+<%= form_with(model: @restaurant_opinion) do |form| %>
+	<div class="field">
+	  <%= form.label :opinion, "Opinion" %>
+	  <%= form.text_area :opinion %>
+	</div>
+
+	<div class="field">
+	  <%= form.label :mark, "Note" %>
+	  <%= form.text_field :mark %>
+	</div>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer" %>
+  </div>
+<% end %>

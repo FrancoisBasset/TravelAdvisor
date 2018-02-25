@@ -6,4 +6,11 @@
 
 <p>Classé <%= @restaurant.rank %> sur <%= Restaurant.count %></p>
 
-<%= image_tag("restaurants/" + @restaurant.name + ".jpg") %>
+<%= image_tag("restaurants/" + @restaurant.name + ".jpg") %></br>
+
+<%= link_to "Ajouter un commentaire", new_restaurant_opinions_path(@restaurant.id) %></br></br>
+
+<% @restaurantOpinions.each do |opinion| %>
+  Note: <%= opinion.mark %>/5</br>
+  "<%= opinion.opinion %>"</br></br>
+<% end %>

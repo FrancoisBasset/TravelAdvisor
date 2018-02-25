@@ -6,4 +6,11 @@
 
 <p>Note : <%= @activity.rank %> sur <%= Activity.count %></p>
 
-<%= image_tag("activities/" + @activity.name + ".jpg") %>
+<%= image_tag("activities/" + @activity.name + ".jpg") %></br>
+
+<%= link_to "Ajouter un commentaire", new_activity_opinions_path(@activity.id) %></br></br>
+
+<% @activityOpinions.each do |opinion| %>
+  Note: <%= opinion.mark %>/5</br>
+  "<%= opinion.opinion %>"</br></br>
+<% end %>

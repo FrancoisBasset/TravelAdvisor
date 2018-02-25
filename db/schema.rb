@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103193456) do
+ActiveRecord::Schema.define(version: 20180225131441) do
 
   create_table "activities", force: :cascade do |t|
     t.text "city", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.integer "rank", null: false
   end
 
-  create_table "activitiesOpinions", force: :cascade do |t|
+  create_table "activities_opinions", force: :cascade do |t|
     t.integer "activity", null: false
     t.text "opinion"
     t.float "mark", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.integer "touristsCount"
   end
 
-  create_table "hotelOpinions", force: :cascade do |t|
+  create_table "hotel_opinions", force: :cascade do |t|
     t.integer "hotel", null: false
     t.text "opinion"
     t.float "mark", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180103193456) do
     t.index ["rank"], name: "Hotel_rank_uindex", unique: true
   end
 
-  create_table "restaurantOpinions", force: :cascade do |t|
+  create_table "restaurant_opinions", force: :cascade do |t|
     t.integer "restaurant", null: false
     t.text "opinion"
     t.float "mark", null: false

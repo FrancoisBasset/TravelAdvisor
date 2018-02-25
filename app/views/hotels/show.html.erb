@@ -6,4 +6,11 @@
 
 <p>Note : <%= @hotel.rank %> sur <%= Hotel.count %></p>
 
-<%= image_tag("hotels/" + @hotel.name + ".jpg") %>
+<%= image_tag("hotels/" + @hotel.name + ".jpg") %></br>
+
+<%= link_to "Ajouter un commentaire", new_hotel_opinions_path(@hotel.id) %></br></br>
+
+<% @hotelOpinions.each do |opinion| %>
+  Note: <%= opinion.mark %>/5</br>
+  "<%= opinion.opinion %>"</br></br>
+<% end %>

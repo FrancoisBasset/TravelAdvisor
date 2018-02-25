@@ -1,0 +1,2 @@
+class ActivityOpinion < ApplicationRecord
+end
