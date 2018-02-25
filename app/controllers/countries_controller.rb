@@ -5,6 +5,7 @@ class CountriesController < ApplicationController
 
   def show; end
 
+
   def new
     @country = Country.new
   end
