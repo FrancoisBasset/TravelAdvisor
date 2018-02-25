@@ -15,8 +15,6 @@ class CitiesController < ApplicationController
   end
 
   def create
-		puts @@country
-
 		@city = City.new
 		@city.name = params[:city][:name]
 		@city.description = params[:city][:description]

@@ -1,0 +1,25 @@
+<%= form_with(model: @restaurant) do |form| %>
+	<div class="field">
+	  <%= form.label :name, "Nom" %>
+	  <%= form.text_area :name %>
+	</div>
+
+	<div class="field">
+	  <%= form.label :address, "Adresse" %>
+	  <%= form.text_field :address %>
+	</div>
+
+	<div class="field">
+	  <%= form.label :rank, "Rank" %>
+	  <%= form.text_field :rank %>
+	</div>
+
+	<div class="field">
+		<%= form.label :image, "Image" %>
+    <%= form.file_field :image %>
+	</div>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer" %>
+  </div>
+<% end %>

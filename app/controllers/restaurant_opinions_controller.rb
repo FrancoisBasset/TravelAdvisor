@@ -3,8 +3,6 @@ class RestaurantOpinionsController < ApplicationController
     @restaurant_opinion = RestaurantOpinion.new
     @@restaurant = Restaurant.find(params[:id])
     @restaurant = Restaurant.find(params[:id])
-
-    puts @restaurant.name
   end
 
   def create

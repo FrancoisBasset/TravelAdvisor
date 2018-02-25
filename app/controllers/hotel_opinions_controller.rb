@@ -3,8 +3,6 @@ class HotelOpinionsController < ApplicationController
     @hotel_opinion = HotelOpinion.new
     @@hotel = Hotel.find(params[:id])
     @hotel = Hotel.find(params[:id])
-
-    puts @hotel.name
   end
 
   def create

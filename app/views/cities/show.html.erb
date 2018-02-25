@@ -4,8 +4,6 @@
 
 <%= link_to "Modifier", edit_city_path(@city) %>
 
-<%=  %>
-
 <p>Classé <%= @city.rank %> sur <%= City.count %></p>
 <p><%= @city.description %></p>
 
@@ -13,17 +11,23 @@
 
 <h3>Restaurants</h3>
 
+<%= link_to "Ajouter un restaurant", new_restaurants_path(@city.id) %></br></br>
+
 <% @restaurants.each do |restaurant| %>
   <%= link_to image_tag("restaurants/" + restaurant.name + ".jpg", height: '200px'), restaurant %>
 <% end %>
 
 <h3>Hotels</h3>
 
+<%= link_to "Ajouter un hotel", new_hotels_path(@city.id) %></br></br>
+
 <% @hotels.each do |hotel| %>
   <%= link_to image_tag("hotels/" + hotel.name + ".jpg", height: '200px'), hotel %>
 <% end %>
 
 <h3>Activités</h3>
+
+<%= link_to "Ajouter une activité", new_activities_path(@city.id) %></br></br>
 
 <% @activities.each do |activity| %>
   <%= link_to image_tag("activities/" + activity.name + ".jpg", height: '200px'), activity %>

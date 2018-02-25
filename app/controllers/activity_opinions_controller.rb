@@ -3,8 +3,6 @@ class ActivityOpinionsController < ApplicationController
     @activity_opinion = ActivityOpinion.new
     @@activity = Activity.find(params[:id])
     @activity = Activity.find(params[:id])
-
-    puts @activity.name
   end
 
   def create
